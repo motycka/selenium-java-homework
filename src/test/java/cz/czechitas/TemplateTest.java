@@ -28,7 +28,7 @@ public class TemplateTest {
         adminPage.login("admin@shopizer.com", "password1");
         Thread.sleep(5000L);
         String expectedErrorMessage = "Invalid username or password";
-        WebElement errorMessage = driver.findElement(By.xpath("//div[@class='alert alert-error']"));
+        WebElement errorMessage = By.xpath("//div[@class='alert alert-error']").findElement(driver);
         String actualErrorMessage = errorMessage.getText();
         assertEquals(actualErrorMessage, expectedErrorMessage, "Login enabled with wrong password");
     }
