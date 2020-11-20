@@ -1,25 +1,49 @@
 package cz.czechitas;
 
-import org.junit.jupiter.api.AfterEach;
-import org.junit.jupiter.api.BeforeEach;
-import org.junit.jupiter.api.Test;
+import org.junit.jupiter.api.*;
+import org.openqa.selenium.*;
+import org.openqa.selenium.WebDriver;
+import static org.junit.jupiter.api.Assertions.*;
 
 public class TemplateTest {
 
+    private static WebDriver driver;
+    private static ShopPage AdminUrlLogin;
 
     @BeforeEach
     public void before() {
-
+        driver = DriverHelper.openFirefox();
+        AdminUrlLogin = new ShopPage(driver);
+        AdminUrlLogin.openPage();
     }
 
     @AfterEach
     public void after() {
-
+        driver.quit();
     }
 
     @Test
-    public void test() {
+    @DisplayName ("Admin login failed, wrong password")
+    public void testAdminlogin1() {
+       AdminUrlLogin.ValidUsernameAdminLogin();
+       AdminUrlLogin.InValidPasswordAdminLogin();
+       AdminUrlLogin.ConfirmAdminLogin();
+    }
 
+    @Test
+    @DisplayName ("Admin login failed, wrong username")
+    public void testAdminlogin2() {
+        AdminUrlLogin.InValidUsernameAdminLogin();
+        AdminUrlLogin.ValidPasswordAdminLogin();
+        AdminUrlLogin.ConfirmAdminLogin();
+    }
+
+    @Test
+    @DisplayName ("Admin login successful")
+    public void testAdminlogin3() {
+        AdminUrlLogin.ValidUsernameAdminLogin();
+        AdminUrlLogin.ValidPasswordAdminLogin();
+        AdminUrlLogin.ConfirmAdminLogin();
     }
 
 }
