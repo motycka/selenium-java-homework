@@ -11,7 +11,6 @@ public class TemplateTest {
 
     private final String baseUrl = "http://czechitas-shopizer.azurewebsites.net/admin/logon.html";
     private static WebDriver driver;
-    private static DriverHelper loginStrana;
     private static adminLoginPage loginPage;
 
     @BeforeEach
