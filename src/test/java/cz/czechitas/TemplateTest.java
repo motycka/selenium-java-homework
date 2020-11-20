@@ -12,14 +12,12 @@ public class TemplateTest {
 
     private static WebDriver driver;
     private static Page page;
-    private static String adminUrl = "http://czechitas-shopizer.azurewebsites.net/admin/logon.html";
-    private static String homeAdmin = "http://czechitas-shopizer.azurewebsites.net/admin/home.html";
 
     @BeforeEach
     public void before () {
         driver = Driver.openFirefox();
-        driver.navigate().to(adminUrl);
         page = new Page(driver);
+        page.openPage();
     }
 
     @AfterEach
@@ -27,8 +25,6 @@ public class TemplateTest {
         driver.quit();
     }
 
-    // zkusila jsem udělat parametrizovaný test, který by spojil první dva testy, ty jsem ponechala a
-    // označila @Disabled
     @ParameterizedTest
     @DisplayName("there should be a message - wrong password or username")
     @CsvSource({
@@ -37,33 +33,13 @@ public class TemplateTest {
     })
     public void testWrongLogin(String userLogin, String passwordLogin){
         page.login(passwordLogin, userLogin);
-        page.getElementByClassName("alert-error");
-        assertTrue(driver.findElement(By.className("alert-error")).isDisplayed(), "Chybová hláška není zobrazena.");
-    }
-
-    @Disabled
-    @Test
-    @DisplayName("there should be a message - wrong password ")
-    public void testWrongPassword () {
-        page.login("wrongPassword", "admin@shopizer.com");
-        page.getElementByClassName("alert-error");
-        assertTrue(driver.findElement(By.className("alert-error")).isDisplayed(), "Chybová hláška není zobrazena.");
-    }
-
-    @Disabled
-    @Test
-    @DisplayName("there should be a message - wrong username ")
-    public void testWrongUsername () {
-        page.login("password", "wrongEmail@wrongDomain.com");
-        page.getElementByClassName("alert-error");
-        assertTrue(driver.findElement(By.className("alert-error")).isDisplayed(), "Chybová hláška není zobrazena.");
+        assertEquals("Invalid username or password", page.getErrorMessage(), "Chybová hláška je nesprávná nebo není zobrazena.");
     }
 
     @Test
     @DisplayName("should be able to login to administration")
     public void testLoginAsAdmin () {
         page.login("password", "admin@shopizer.com");
-        page.getRightAddress(homeAdmin);
-        assertEquals(homeAdmin, driver.getCurrentUrl(), "Měli byste být na stránce: " + homeAdmin);
+        assertEquals("true", page.waitForLogin(), "Měli byste být na stránce: " + Settings.homeAdmin);
     }
 }
