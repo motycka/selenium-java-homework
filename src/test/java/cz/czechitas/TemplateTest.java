@@ -46,14 +46,9 @@ public class TemplateTest {
     @Test
     @DisplayName("Login do admina se špatným uživatelem - chybová hláška")
     public void testBadUser() throws InterruptedException {
+//        Page object pattern
         loginPage.adminLogin("abc123@shopizer.com", "password");
-//        přes Page Object Pattern se pošle toto:
-//        driver.findElement(By.id("loginField1Selector")).sendKeys("abc123@shopizer.com");
-//        driver.findElement(By.id("loginField2Selector")).sendKeys("password");
-//        driver.findElement(By.id("loginSubmitButton")).click();
         Thread.sleep(5000);
-//        driver.findElement(By.className("errorAdminLoginSelector")).sendKeys("Invalid username or password");
-//        String errorMessage = loginPage.badAccessError();
         Assertions.assertEquals("Invalid username or password", loginPage.badAccessError());
     }
 
@@ -61,13 +56,7 @@ public class TemplateTest {
     @DisplayName("Login do admina se správným uživatelem i heslem - ověření, že se admin otevřel")
     public void testAllFine() throws InterruptedException {
         loginPage.adminLogin("admin@shopizer.com", "password");
-//        Page Object Pattern
-//        driver.findElement(By.id("loginField1Selector")).sendKeys("admin@shopizer.com");
-//        driver.findElement(By.id("loginField2Selector")).sendKeys("password");
-//        driver.findElement(By.id("loginSubmitButton")).click();
         Thread.sleep(5000);
-//        driver.findElement(By.className("adminPageSelector")).sendKeys("body");
-//        String adminPageSelector = loginPage.finallyAdminPage();
         WebElement adminPage = driver.findElement(By.className("body"));
         Assertions.assertEquals(true, adminPage.isDisplayed());
     }

@@ -6,8 +6,8 @@ import org.openqa.selenium.support.ui.*;
 
 public class adminLoginPage {
 
-    private final By loginField1Selector = By.id("username");
-    private final By loginField2Selector = By.id("password");
+    private final By loginUsernameSelector = By.id("username");
+    private final By loginPasswordSelector = By.id("password");
     private final By loginButtonSelector = By.id("formSubmitButton");
     private final By errorAdminLoginSelector = By.className("alert-error");
     private final By adminPageSelector = By.className("body");
@@ -24,8 +24,8 @@ public class adminLoginPage {
     }
 
     public void adminLogin(String username, String password) {
-        driver.findElement(loginField1Selector).sendKeys(username);
-        driver.findElement(loginField2Selector).sendKeys(password);
+        driver.findElement(loginUsernameSelector).sendKeys(username);
+        driver.findElement(loginPasswordSelector).sendKeys(password);
         driver.findElement(loginButtonSelector).click();
     }
 
