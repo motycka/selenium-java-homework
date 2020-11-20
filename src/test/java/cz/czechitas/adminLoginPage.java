@@ -10,7 +10,7 @@ public class adminLoginPage {
     private final By loginPasswordSelector = By.id("password");
     private final By loginButtonSelector = By.id("formSubmitButton");
     private final By errorAdminLoginSelector = By.className("alert-error");
-    private final By adminPageSelector = By.xpath("//*[contains(text(),'Default store')]");
+    private final By adminPageSelector = By.className("icon-user");
     private final WebDriver driver;
 
     public adminLoginPage(WebDriver driver) {
