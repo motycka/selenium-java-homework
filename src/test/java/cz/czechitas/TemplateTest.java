@@ -57,7 +57,7 @@ public class TemplateTest {
     public void testAllFine() throws InterruptedException {
         loginPage.adminLogin("admin@shopizer.com", "password");
         Thread.sleep(5000);
-        WebElement adminPage = driver.findElement(By.className("body"));
+        WebElement adminPage = driver.findElement(By.xpath("//*[contains(text(),'Default store')]"));
         Assertions.assertEquals(true, adminPage.isDisplayed());
     }
 
