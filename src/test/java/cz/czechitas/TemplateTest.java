@@ -11,13 +11,13 @@ public class TemplateTest {
 
     private final String baseUrl = "http://czechitas-shopizer.azurewebsites.net/admin/logon.html";
     private static WebDriver driver;
-    private static adminLoginPage loginPage;
+    private static AdminLoginPage loginPage;
 
     @BeforeEach
     public void before() throws InterruptedException {
         driver = DriverHelper.openChrome();
         driver.navigate().to(baseUrl);
-        loginPage = new adminLoginPage(driver);
+        loginPage = new AdminLoginPage(driver);
         loginPage.openPage();
     }
 

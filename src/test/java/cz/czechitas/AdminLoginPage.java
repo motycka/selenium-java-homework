@@ -4,7 +4,7 @@ import java.util.*;
 import org.openqa.selenium.*;
 import org.openqa.selenium.support.ui.*;
 
-public class adminLoginPage {
+public class AdminLoginPage {
 
     private final By loginUsernameSelector = By.id("username");
     private final By loginPasswordSelector = By.id("password");
@@ -13,14 +13,14 @@ public class adminLoginPage {
     private final By adminPageSelector = By.className("icon-user");
     private final WebDriver driver;
 
-    public adminLoginPage(WebDriver driver) {
+    public AdminLoginPage(WebDriver driver) {
         this.driver = driver;
 
     }
 
     public void openPage() throws InterruptedException {
         driver.navigate().to("http://czechitas-shopizer.azurewebsites.net/admin/logon.html");
-        Thread.sleep(10000);
+        Thread.sleep(5000);
     }
 
     public void adminLogin(String username, String password) {
