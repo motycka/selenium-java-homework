@@ -1,16 +1,27 @@
 package cz.czechitas;
 
 import org.openqa.selenium.*;
-import okhttp3.internal.http2.*;
+import org.openqa.selenium.support.ui.*;
+
+import org.junit.jupiter.api.*;
+import org.omg.CORBA.DynAnyPackage.*;
+import org.openqa.selenium.*;
+import org.openqa.selenium.WebDriver;
+import org.openqa.selenium.support.ui.*;
+
+import static java.lang.Thread.*;
 
 public class ShopPage {
   //proměnná
     private final WebDriver driver;
+    WebElement element;
 
     private final By usernameadminlogin = By.id("username");
     private final By passwordadminlogin = By.id("password");
     private final By adminloginbutton = By.id("formSubmitButton");
+    private final By loginfailmessage = By.xpath("//*[@id=\"logon\"]/div[1]/div");
 
+    private final int maxWaitInSeconds= 10;
 
   //konstruktor
     public ShopPage(WebDriver driver)
@@ -53,10 +64,12 @@ public class ShopPage {
       driver.findElement(passwordadminlogin).sendKeys(InValidPassword);
     }
 
- //metod pro příhlášení, click na adminloginbutton
+ //metoda pro příhlášení, click na adminloginbutton
     public void ConfirmAdminLogin()
     {
-        driver.findElement(adminloginbutton).click();
+      driver.findElement(adminloginbutton).click();
     }
+
+ //metoda pro nalezení elementu failmessage
 
 }

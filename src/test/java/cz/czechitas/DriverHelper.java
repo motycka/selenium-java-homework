@@ -26,7 +26,7 @@ public class DriverHelper {
         return driver;
     }
 
-    public static WebDriver openChrome() {
+  /*  public static WebDriver openChrome() {
         setDriver("chrome");
         Map<String, Object> prefs = new HashMap<>();
         prefs.put("download.default_directory", getPath(downloadsPath));
@@ -36,7 +36,7 @@ public class DriverHelper {
         WebDriver driver = new ChromeDriver(options);
         driver.manage().window().maximize();
         return driver;
-    }
+    } */
 
     public static void setDriver(String driver) {
         String os = System.getProperty("os.name").toLowerCase();
