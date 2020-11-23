@@ -13,7 +13,7 @@ public class LoginPage {
     }
 
 
-    public void openPage() throws InterruptedException {
+    public void openPage(){
         driver.navigate().to (Settings.baseUrl + "admin/logon.html");
     }
 
