@@ -6,7 +6,7 @@ import org.openqa.selenium.WebDriver;
 
 import static org.junit.jupiter.api.Assertions.*;
 
-@DisplayName("Test admin login for")
+@DisplayName("Test admin login")
 public class AdminLoginTest {
 
     private WebDriver driver;
