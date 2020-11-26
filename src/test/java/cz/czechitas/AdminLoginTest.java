@@ -13,10 +13,11 @@ public class AdminLoginTest {
     String inValidUsername = "wrongadmin@shopizer.com";
     String validPassword = "password";
     String invalidPassword = "wrongpassword";
+    String failMessage = "Invalid username or password";
 
     @BeforeEach
     public void before() {
-        driver = DriverHelper.openChrome();
+        driver = DriverHelper.openFirefox();
         adminLoginPage = new AdminLoginPage(driver);
         adminLoginPage.openPage();
     }
@@ -29,15 +30,15 @@ public class AdminLoginTest {
     @Test
     @DisplayName("Admin login failed, wrong password")
     public void testAdminLogin1() {
-        adminLoginPage.login(validUsername,invalidPassword);
-        assertEquals("Invalid username or password",adminLoginPage.getError(),"Failmessage should display");
+        adminLoginPage.login(validUsername, invalidPassword);
+        assertEquals(failMessage, adminLoginPage.getError(), "Failmessage should display");
     }
 
     @Test
     @DisplayName("Admin login failed, wrong username")
     public void testAdminLogin2() {
-        adminLoginPage.login(inValidUsername,validPassword);
-        assertEquals("Invalid username or password",adminLoginPage.getError(),"Failmessage should display");
+        adminLoginPage.login(inValidUsername, validPassword);
+        assertEquals(failMessage, adminLoginPage.getError(), "Failmessage should display");
     }
 
     @Test
@@ -45,7 +46,7 @@ public class AdminLoginTest {
     public void testAdminLogin3() {
 
         adminLoginPage.login(validUsername, validPassword);
-        assertEquals(validUsername, adminLoginPage.getAdminName(), "Admin should be redirected to admin page");
+        assertEquals(validUsername,adminLoginPage.getAdminName(), "Admin should be redirected to admin page");
     }
 
 }

@@ -13,8 +13,8 @@ public class AdminLoginPage {
     private final By usernameSelector = By.id("username");
     private final By passwordSelector = By.id("password");
     private final By loginButtonSelector = By.id("formSubmitButton");
-    private final By loginfailmessageSelector = By.xpath("//*[@id=\"logon\"]/div[1]/div");
-    private final By logedAdminSelector = By.id("dropdown-toggle");
+    private final By loginFailmessageSelector = By.xpath("//*[@id=\"logon\"]/div[1]/div");
+    private final By logedAdminSelector = By.xpath("/html/body/div[1]/div[1]/div/div[2]/div/div/ul[1]/li/a");
 
     private final int maxWaitInSeconds = 10;
 
@@ -45,10 +45,10 @@ public class AdminLoginPage {
         return element.getText();
     }
 
-    //metoda ověření viditelnosti loginfailmessageSelector
+    //metoda ověření viditelnosti loginFailmessageSelector
     public String getError() {
         WebElement element = new WebDriverWait(driver, maxWaitInSeconds)
-                .until(ExpectedConditions.visibilityOfElementLocated(loginfailmessageSelector));
+                .until(ExpectedConditions.visibilityOfElementLocated(loginFailmessageSelector));
 
         return element.getText();
     }
