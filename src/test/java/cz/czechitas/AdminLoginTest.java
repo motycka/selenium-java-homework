@@ -46,7 +46,7 @@ public class AdminLoginTest {
     public void testAdminLogin3() {
 
         adminLoginPage.login(validUsername, validPassword);
-        assertEquals(validUsername,adminLoginPage.getAdminName(), "Admin should be redirected to admin page");
+        assertEquals(validUsername, adminLoginPage.getAdminName(), "Admin should be redirected to admin page");
     }
 
 }
