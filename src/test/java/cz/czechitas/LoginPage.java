@@ -12,6 +12,7 @@ public class LoginPage {
     private final By logon = By.id("formSubmitButton");
     private final By errorMessage = By.className("alert-error");
     private static final String loggedInUrl = Settings.baseUrl + "/admin/home";
+    private final By homeIcon = By.className("icon-home");
 
 
 
@@ -47,5 +48,10 @@ public class LoginPage {
     public String getErrorMessage ( ) {
         return driver.findElement(errorMessage).getText();
     }
+
+    public String getHomeicon () {
+        return driver.findElement(homeIcon).getText();
+    }
+
 
 }

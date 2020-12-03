@@ -7,7 +7,6 @@ public class TemplateTest {
 
     private static WebDriver driver;
     private static LoginPage objLoginPage;
-    private static AdminPage objAdminPage;
 
 
     @BeforeEach
