@@ -52,7 +52,7 @@ public class TemplateTest {
     public void testValidLogin(){
 
         objLoginPage.loginToLoginPage("admin@shopizer.com", "password");
-        Assertions.assertEquals(objAdminPage.getUrl(), driver.getCurrentUrl(), "You are logged in");
+        Assertions.assertTrue( objLoginPage.getHomeicon().contains("Home"), "You are logged in");
     }
 
 }
