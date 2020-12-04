@@ -14,7 +14,7 @@ import java.util.Objects;
 
 public class DriverHelper {
 
-    private static String downloadsPath = "";
+    private static final String downloadsPath = "";
 
     public static WebDriver openFirefox() {
         WebDriverManager.firefoxdriver().setup();

@@ -1,6 +1,5 @@
-package cz.czechitas.admin;
+package cz.czechitas.pages;
 
-import cz.czechitas.Settings;
 import org.openqa.selenium.By;
 import org.openqa.selenium.NoSuchElementException;
 import org.openqa.selenium.WebDriver;
@@ -14,13 +13,15 @@ public class AdminLoginPage {
     private final By loginButtonSelector = By.id("formSubmitButton");
     private final By errorSelector = By.className("alert-error");
     private final WebDriver driver;
+    private final String baseUrl;
 
-    public AdminLoginPage(WebDriver driver) {
+    public AdminLoginPage(WebDriver driver, String baseUrl) {
         this.driver = driver;
+        this.baseUrl = baseUrl;
     }
 
     public void openPage() {
-        driver.navigate().to(Settings.baseUrl + "/admin/logon.html");
+        driver.navigate().to(this.baseUrl + "/admin/logon.html");
     }
 
     public boolean isOnPage() {

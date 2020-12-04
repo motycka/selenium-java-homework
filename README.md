@@ -19,3 +19,17 @@ Stáhněte si projekt. V projektu už jsou nastavené veškeré závislosti a je
 
 #### Varianta B: 
 Pošlete mi zip
+
+
+## Řešení - ukládání uživatelského jména a hesla:
+
+Aby nebylo nutné ukládat citlivé údaje v kódu, budeme je načítat ze souboru z uživatelského počítače.
+
+1. Ve svém domovském adresáři vytvořte soubor `automation.properties`. Pokud nevíte co je váš domovský adresář, spusťte si třídu `WhatsMyHome` a ta vám to řekne.
+2. Do souboru zapište:
+```
+baseUrl=https://czechitas-shopizer.azurewebsites.net
+username=***
+password=***
+```
+Místo *** samozřejmě napiště uživatelské jméno a heslo.
