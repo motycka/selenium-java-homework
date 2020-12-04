@@ -1,19 +1,19 @@
 package cz.czechitas;
 
-        import org.junit.jupiter.api.*;
-        import org.openqa.selenium.*;
+import org.junit.jupiter.api.*;
+import org.openqa.selenium.*;
 
-public class TemplateTest {
+public class LoginTest {
 
     private static WebDriver driver;
-    private static LoginPage objLoginPage;
+    private static LoginPage LoginPage;
 
 
     @BeforeEach
     public void before() {
         driver = DriverHelper.openFirefox();
-        objLoginPage= new LoginPage(driver);
-        objLoginPage.openPage();
+        LoginPage= new LoginPage(driver);
+        LoginPage.openPage();
     }
 
     @AfterEach
@@ -26,10 +26,10 @@ public class TemplateTest {
     /*Login do admina se správným uživatelem, ale špatným heslem - ověřte chybovou hlášku*/
     public void testInvalidLogin1() {
         //Login to application
-        objLoginPage.loginToLoginPage("admin@shopizer.com", "pass");
+        LoginPage.loginToLoginPage("admin@shopizer.com", "pass");
         
         //verify error message
-       Assertions.assertTrue(objLoginPage.getErrorMessage().contains("Invalid username or password"), "Invalid username or password");
+        Assertions.assertEquals("Invalid username or password", LoginPage.getErrorMessage(), "Try again with valid data");
 
     }
 
@@ -39,10 +39,9 @@ public class TemplateTest {
     /*Login do admina se správným uživatelem, ale špatným heslem - ověřte chybovou hlášku*/
     public void testInvalidLogin2() {
         //Login to application
-        objLoginPage.loginToLoginPage("admin@", "password");
-
+        LoginPage.loginToLoginPage("admin@", "password");
         //verify error message
-        Assertions.assertTrue(objLoginPage.getErrorMessage().contains("Invalid username or password"), "Invalid username or password");
+        Assertions.assertEquals("Invalid username or password", LoginPage.getErrorMessage(), "Try again with valid data");
     }
 
     @Test
@@ -50,8 +49,9 @@ public class TemplateTest {
     /*Login with the correct username and password - verify that the admin has opened.*/
     public void testValidLogin(){
 
-        objLoginPage.loginToLoginPage("admin@shopizer.com", "password");
-        Assertions.assertTrue( objLoginPage.getHomeicon().contains("Home"), "You are logged in");
+        LoginPage.loginToLoginPage("admin@shopizer.com", "password");
+       Assertions.assertEquals("admin@shopizer.com", LoginPage.getAdminIcon(), "You are logged in");
+
     }
 
 }

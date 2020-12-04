@@ -11,8 +11,7 @@ public class LoginPage {
     private final By password = By.id("password");
     private final By logon = By.id("formSubmitButton");
     private final By errorMessage = By.className("alert-error");
-    private static final String loggedInUrl = Settings.baseUrl + "/admin/home";
-    private final By homeIcon = By.className("icon-home");
+    private final By adminIcon = By.className("icon-user");
 
 
 
@@ -40,18 +39,20 @@ public class LoginPage {
         this.setUserName(strUserName);
         this.setPassword(strPassword);
         this.clickLogon();
-        new WebDriverWait(driver, 6)
-                .until(ExpectedConditions.visibilityOfAllElementsLocatedBy(By.className("alert-error")));
-
     }
 
     public String getErrorMessage ( ) {
+        new WebDriverWait(driver, 6)
+                .until(ExpectedConditions.visibilityOfAllElementsLocatedBy(By.className("alert-error")));
+
         return driver.findElement(errorMessage).getText();
     }
 
-    public String getHomeicon () {
-        return driver.findElement(homeIcon).getText();
+    public String getAdminIcon () {
+       new WebDriverWait(driver, 10)
+               .until(ExpectedConditions.visibilityOfAllElementsLocatedBy(By.className("icon-user")));
+
+        return driver.findElement(adminIcon).getText();
+
     }
-
-
 }
